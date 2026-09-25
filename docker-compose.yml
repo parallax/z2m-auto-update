@@ -1,0 +1,19 @@
+# Standalone example. Inside Home Assistant install the add-on instead.
+services:
+  z2m-auto-update:
+    image: ghcr.io/parallax/z2m-auto-update:latest
+    restart: unless-stopped
+    ports:
+      - "8099:8099"
+    volumes:
+      - z2m-auto-update:/data
+    environment:
+      TZ: Europe/London
+      Z2M_AU_MQTT_HOST: mqtt.local
+      Z2M_AU_MQTT_USERNAME: ""
+      Z2M_AU_MQTT_PASSWORD: ""
+      Z2M_AU_BASE_TOPIC: zigbee2mqtt
+      Z2M_AU_UPDATE_WINDOW_START: ""
+      Z2M_AU_UPDATE_WINDOW_END: ""
+volumes:
+  z2m-auto-update:
